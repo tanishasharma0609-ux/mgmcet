@@ -8,21 +8,44 @@ const loginForm = document.querySelector('#loginForm');
 const loginError = document.querySelector('#loginError');
 const loginUsername = document.querySelector('#loginUsername');
 const loginPassword = document.querySelector('#loginPassword');
+const memberScreen = document.querySelector('#memberScreen');
+const memberForm = document.querySelector('#memberForm');
+const memberError = document.querySelector('#memberError');
+const memberNameInput = document.querySelector('#memberNameInput');
+const memberEmailInput = document.querySelector('#memberEmailInput');
+const memberName = document.querySelector('#memberName');
+const profileName = document.querySelector('#profileName');
+const profileAvatar = document.querySelector('#profileAvatar');
+const topAvatar = document.querySelector('#topAvatar');
 
-const teamAccess = {
-  'alex.morgan': 'orbit-42',
-  'sam.okafor': 'neon-82',
-  'jamie.lee': 'vector-64',
-  'riley.kim': 'signal-57',
-  'taylor.nguyen': 'pulse-36'
-};
+const teamAccess = { teammgm: 'mgmcet' };
+const memberAccess = [
+  { name: 'Maya Khan', email: 'maya.khan@teammgm.com', initials: 'MK', role: 'Project lead' },
+  { name: 'Dev Nair', email: 'dev.nair@teammgm.com', initials: 'DN', role: 'Operations' }
+];
 
-function unlockWorkspace() {
+function applyMember(member) {
+  memberName.textContent = member.name;
+  profileName.textContent = member.name;
+  profileAvatar.textContent = member.initials;
+  topAvatar.textContent = member.initials;
+  document.querySelector('#profileRole').textContent = member.role;
+}
+
+function unlockWorkspace(member) {
+  applyMember(member);
   loginScreen.classList.add('is-hidden');
+  memberScreen.classList.add('is-hidden');
   document.body.classList.remove('is-locked');
 }
 
-if (sessionStorage.getItem('northstar-authenticated') === 'true') unlockWorkspace();
+const savedMember = JSON.parse(sessionStorage.getItem('univo-member') || 'null');
+if (sessionStorage.getItem('univo-authenticated') === 'true' && savedMember) unlockWorkspace(savedMember);
+else if (sessionStorage.getItem('univo-authenticated') === 'true') {
+  loginScreen.classList.add('is-hidden');
+  memberScreen.classList.remove('is-hidden');
+  memberNameInput.focus();
+}
 
 loginForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -34,9 +57,27 @@ loginForm.addEventListener('submit', (event) => {
     requestAnimationFrame(() => loginForm.classList.add('shake'));
     return;
   }
-  sessionStorage.setItem('northstar-authenticated', 'true');
+  sessionStorage.setItem('univo-authenticated', 'true');
   loginError.textContent = '';
-  unlockWorkspace();
+  loginScreen.classList.add('is-hidden');
+  memberScreen.classList.remove('is-hidden');
+  memberNameInput.focus();
+});
+
+memberForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const submittedName = memberNameInput.value.trim().toLowerCase();
+  const submittedEmail = memberEmailInput.value.trim().toLowerCase();
+  const member = memberAccess.find((profile) => profile.name.toLowerCase() === submittedName && profile.email === submittedEmail);
+  if (!member) {
+    memberError.textContent = 'Member not recognized. Check your name and team email.';
+    memberForm.classList.remove('shake');
+    requestAnimationFrame(() => memberForm.classList.add('shake'));
+    return;
+  }
+  sessionStorage.setItem('univo-member', JSON.stringify(member));
+  memberError.textContent = '';
+  unlockWorkspace(member);
 });
 
 document.querySelector('#togglePassword').addEventListener('click', (event) => {
@@ -48,8 +89,10 @@ document.querySelector('#togglePassword').addEventListener('click', (event) => {
 });
 
 document.querySelector('#logoutButton').addEventListener('click', () => {
-  sessionStorage.removeItem('northstar-authenticated');
+  sessionStorage.removeItem('univo-authenticated');
+  sessionStorage.removeItem('univo-member');
   loginScreen.classList.remove('is-hidden');
+  memberScreen.classList.add('is-hidden');
   document.body.classList.add('is-locked');
   loginForm.reset();
   loginUsername.focus();
@@ -106,7 +149,7 @@ document.querySelector('#projectForm').addEventListener('submit', (event) => {
   event.preventDefault();
   const newRow = document.createElement('tr');
   newRow.dataset.status = 'on-track';
-  newRow.innerHTML = `<td><span class="project-dot blue"></span><strong>${projectName.value}</strong></td><td><span class="avatar avatar-green small-avatar">AM</span> Alex Morgan</td><td><span class="table-progress"><i><b style="width:0%"></b></i>0%</span></td><td>Not set</td><td><span class="status-pill on-track">On track</span></td><td><button class="row-more" aria-label="More options">•••</button></td>`;
+  newRow.innerHTML = `<td><span class="project-icon icon-new">✦</span><strong>${projectName.value}</strong></td><td><span class="avatar avatar-purple small-avatar">MK</span> Maya Khan</td><td><span class="table-progress"><i><b style="width:0%"></b></i>0%</span></td><td>Not set</td><td><span class="status-pill on-track">On track</span></td><td><button class="row-more" aria-label="More options">•••</button></td>`;
   document.querySelector('#projectTable').prepend(newRow);
   projectRows.push(newRow);
   projectModal.hidden = true;

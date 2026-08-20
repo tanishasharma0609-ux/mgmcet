@@ -98,3 +98,23 @@ body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opa
 @keyframes blink { 50% { opacity: 0; } }
 @keyframes shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+
+.project-progress { position: relative; padding: 14px 15px 13px; border: 1px solid #294043; border-radius: 2px; overflow: hidden; }
+.project-progress::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.08) 50%, transparent 70%); transform: translateX(-120%); animation: scanProject 4.5s ease-in-out infinite; }
+.project-progress:nth-child(2)::after { animation-delay: .7s; }.project-progress:nth-child(3)::after { animation-delay: 1.4s; }.project-progress:nth-child(4)::after { animation-delay: 2.1s; }
+.project-red { background: linear-gradient(115deg, #32181d, #160f15); border-color: #743640; }.project-black { background: linear-gradient(115deg, #0b1115, #050708); border-color: #2a4245; }
+.project-info { position: relative; z-index: 1; }.project-info b { color: #f2faf6; }.project-info small { color: #b38e92; }.project-black .project-info small { color: #7e9996; }.project-progress .progress-track { position: relative; z-index: 1; margin-left: 0; }.project-progress .fill { animation-duration: 1.4s; }
+.project-icon { display: inline-grid; place-items: center; width: 27px; height: 27px; flex-shrink: 0; color: #fff; border: 1px solid currentColor; border-radius: 2px; font-size: 15px; font-weight: 700; animation: iconFloat 2.8s ease-in-out infinite; }.icon-web { color: var(--coral); background: rgba(255,107,120,.12); }.icon-app { color: var(--teal); background: rgba(52,215,199,.1); }.icon-campaign { color: var(--yellow); background: rgba(245,213,107,.1); }.icon-research { color: var(--blue); background: rgba(107,168,255,.1); }.icon-new { color: var(--green); background: rgba(125,255,189,.1); margin-right: 8px; }
+td:first-child .project-icon { vertical-align: middle; margin-right: 8px; width: 22px; height: 22px; font-size: 12px; }
+@keyframes scanProject { 0%, 35% { transform: translateX(-120%); } 65%, 100% { transform: translateX(120%); } }
+@keyframes iconFloat { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-2px) rotate(3deg); } }
+
+body, button, input, select { font-family: 'Manrope', sans-serif; }
+h1, h2, .brand, .login-brand, .login-card h1, .metric-card > strong, .date-badge b { font-family: 'Sora', sans-serif; }
+.brand-mark { position: relative; isolation: isolate; width: 31px; height: 31px; border-radius: 50%; background: transparent; color: var(--green); border: 1px solid var(--green); font-family: 'Sora', sans-serif; font-size: 13px; box-shadow: 0 0 12px rgba(125,255,189,.2); }
+.brand-mark::before { content: ''; position: absolute; inset: 4px -4px; z-index: -1; border: 1px solid var(--teal); border-left-color: transparent; border-right-color: transparent; border-radius: 50%; transform: rotate(-28deg); }
+.brand-mark::after { content: ''; position: absolute; top: -4px; right: 2px; width: 4px; height: 4px; background: var(--coral); border-radius: 50%; box-shadow: 0 0 7px var(--coral); }
+.brand-mark > span { line-height: 1; }
+.login-brand .brand-mark { width: 34px; height: 34px; }
+.login-brand .brand-mark::before { inset: 5px -5px; }
+.login-brand .brand-mark::after { top: -5px; }
