@@ -6,7 +6,7 @@
   <title>Univo | Team workspace</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -24,7 +24,7 @@
         <p class="login-error" id="loginError" role="alert"></p>
       </form>
       <div class="login-meta"><span class="status-light"></span> Local session active <span>·</span> Team access only</div>
-      <details class="demo-access"><summary>View team access ID</summary><p>teammgm / mgmcet</p></details>
+      <details class="demo-access"><summary>View team access records</summary><p>teammgm / mgmcet<br>team@mgmcet</p></details>
     </div>
   </section>
   <section class="login-screen member-screen is-hidden" id="memberScreen" aria-labelledby="memberTitle">
@@ -35,7 +35,7 @@
       <h1 id="memberTitle">Who is signing in?</h1>
       <p class="login-copy">Enter your member details to open your personal workspace. Only approved Team MGM members can continue.</p>
       <form id="memberForm" class="login-form">
-        <label>Full name<input id="memberNameInput" autocomplete="name" placeholder="e.g. Maya Khan" required /></label>
+        <label>Full name<input id="memberNameInput" autocomplete="name" placeholder="Enter your full name" required /></label>
         <label>Team email<input id="memberEmailInput" type="email" autocomplete="email" placeholder="name@teammgm.com" required /></label>
         <button class="primary-button login-button" type="submit">Open personal workspace <span>→</span></button>
         <p class="login-error" id="memberError" role="alert"></p>
@@ -59,7 +59,7 @@
       <nav class="primary-nav">
         <p class="nav-label">Workspace</p>
         <button class="nav-item active" data-view="Overview"><span class="nav-icon">▦</span> Overview</button>
-        <button class="nav-item" data-view="My tasks"><span class="nav-icon">✓</span> My tasks <span class="nav-count">4</span></button>
+        <button class="nav-item" data-view="My tasks"><span class="nav-icon">✓</span> My tasks</button>
         <button class="nav-item" data-view="Projects"><span class="nav-icon">□</span> Projects</button>
         <button class="nav-item" data-view="Calendar"><span class="nav-icon">▣</span> Calendar</button>
         <p class="nav-label second-label">Manage</p>
@@ -68,9 +68,9 @@
       </nav>
 
       <div class="sidebar-bottom">
-        <div class="storage-label"><span>Storage</span><span>62%</span></div>
-        <div class="storage-bar"><span></span></div>
-        <p>6.2 GB of 10 GB used</p>
+        <div class="storage-label"><span>Storage</span><span>Ready</span></div>
+        <div class="storage-bar"><span style="width: 0%"></span></div>
+        <p>No files stored yet</p>
         <button class="help-link"><span>?</span> Help center</button>
         <button class="logout-link" id="logoutButton"><span>↪</span> Lock workspace</button>
         <button class="profile-mini"><span class="avatar avatar-green" id="profileAvatar">TM</span><span><strong id="profileName">Team MGM</strong><small id="profileRole">Team member</small></span><span class="more">•••</span></button>
@@ -99,63 +99,46 @@
         </section>
 
         <section class="metric-grid" aria-label="Workspace summary">
-          <article class="metric-card metric-lilac"><div class="metric-top"><span>Active projects</span><span class="metric-icon">◫</span></div><strong>12</strong><span class="metric-change positive">↗ 16.8% <em>vs last month</em></span></article>
-          <article class="metric-card metric-peach"><div class="metric-top"><span>Tasks completed</span><span class="metric-icon">✓</span></div><strong>68</strong><span class="metric-change positive">↗ 12.4% <em>vs last month</em></span></article>
-          <article class="metric-card metric-blue"><div class="metric-top"><span>Team members</span><span class="metric-icon">◎</span></div><strong>02</strong><span class="metric-change neutral">— Team MGM</span></article>
-          <article class="metric-card metric-yellow"><div class="metric-top"><span>Due this week</span><span class="metric-icon">◷</span></div><strong>09</strong><span class="metric-change warning">↗ 3 more <em>than last week</em></span></article>
+          <article class="metric-card metric-lilac"><div class="metric-top"><span>Active projects</span><span class="metric-icon">◫</span></div><strong>00</strong><span class="metric-change neutral">— Add your first project</span></article>
+          <article class="metric-card metric-peach"><div class="metric-top"><span>Tasks completed</span><span class="metric-icon">✓</span></div><strong>00</strong><span class="metric-change neutral">— No tasks yet</span></article>
+          <article class="metric-card metric-blue"><div class="metric-top"><span>Team members</span><span class="metric-icon">◎</span></div><strong>01</strong><span class="metric-change neutral">— You are signed in</span></article>
+          <article class="metric-card metric-yellow"><div class="metric-top"><span>Due this week</span><span class="metric-icon">◷</span></div><strong>00</strong><span class="metric-change neutral">— No deadlines yet</span></article>
         </section>
 
         <section class="content-grid">
           <article class="panel progress-panel">
             <div class="panel-heading"><div><h2>Project progress</h2><p>Keep an eye on your active work</p></div><button class="text-button">View all <span>→</span></button></div>
-            <div class="progress-list">
-              <div class="project-progress project-red"><div class="project-info"><span class="project-icon icon-web">⌁</span><span><strong>Website redesign</strong><small>Design & development</small></span><b>84%</b></div><div class="progress-track"><span class="fill coral-fill" style="width:84%"></span></div></div>
-              <div class="project-progress project-black"><div class="project-info"><span class="project-icon icon-app">▣</span><span><strong>Mobile app v2.0</strong><small>Product & engineering</small></span><b>62%</b></div><div class="progress-track"><span class="fill teal-fill" style="width:62%"></span></div></div>
-              <div class="project-progress project-red"><div class="project-info"><span class="project-icon icon-campaign">✦</span><span><strong>Q4 marketing campaign</strong><small>Marketing</small></span><b>48%</b></div><div class="progress-track"><span class="fill yellow-fill" style="width:48%"></span></div></div>
-              <div class="project-progress project-black"><div class="project-info"><span class="project-icon icon-research">⌕</span><span><strong>Customer research</strong><small>Research & insights</small></span><b>31%</b></div><div class="progress-track"><span class="fill blue-fill" style="width:31%"></span></div></div>
-            </div>
+            <div class="empty-state"><span class="empty-icon">◫</span><strong>No projects yet</strong><p>Your workspace is ready. Create a project to start tracking progress.</p><button class="text-button empty-action" data-action="new-project">+ Create your first project</button></div>
           </article>
 
           <article class="panel deadline-panel">
             <div class="panel-heading"><div><h2>Upcoming deadlines</h2><p>What needs your attention</p></div><button class="more-button" aria-label="More deadline options">•••</button></div>
-            <div class="deadline-list">
-              <div class="deadline-item"><span class="date-badge"><b>25</b><small>OCT</small></span><span class="deadline-copy"><strong>Homepage concepts</strong><small>Website redesign</small></span><span class="due-tag urgent">Tomorrow</span></div>
-              <div class="deadline-item"><span class="date-badge"><b>28</b><small>OCT</small></span><span class="deadline-copy"><strong>App store assets</strong><small>Mobile app v2.0</small></span><span class="due-tag">In 4 days</span></div>
-              <div class="deadline-item"><span class="date-badge"><b>30</b><small>OCT</small></span><span class="deadline-copy"><strong>Campaign brief</strong><small>Q4 marketing campaign</small></span><span class="due-tag">In 6 days</span></div>
-            </div>
+            <div class="empty-state"><span class="empty-icon">◷</span><strong>No deadlines yet</strong><p>Add dates when you create your project plan.</p></div>
           </article>
         </section>
 
         <section class="lower-grid">
           <article class="panel task-panel">
-            <div class="panel-heading task-heading"><div><h2>My tasks</h2><p>4 tasks need your attention</p></div><div class="task-tabs"><button class="active">Today</button><button>This week</button></div></div>
-            <div class="task-list" id="taskList">
-              <label class="task-row"><input type="checkbox"><span class="checkmark"></span><span class="task-copy"><strong>Review homepage concepts</strong><small>Website redesign <b>·</b> Due today</small></span><span class="priority high">High</span></label>
-              <label class="task-row"><input type="checkbox"><span class="checkmark"></span><span class="task-copy"><strong>Finalize onboarding flow</strong><small>Mobile app v2.0 <b>·</b> Due today</small></span><span class="priority medium">Medium</span></label>
-              <label class="task-row"><input type="checkbox"><span class="checkmark"></span><span class="task-copy"><strong>Write launch email copy</strong><small>Q4 marketing campaign <b>·</b> Due tomorrow</small></span><span class="priority medium">Medium</span></label>
-              <label class="task-row"><input type="checkbox"><span class="checkmark"></span><span class="task-copy"><strong>Schedule user interviews</strong><small>Customer research <b>·</b> Due Oct 28</small></span><span class="priority low">Low</span></label>
-            </div>
+            <div class="panel-heading task-heading"><div><h2>My tasks</h2><p>No tasks yet</p></div><div class="task-tabs"><button class="active">Today</button><button>This week</button></div></div>
+            <div class="task-list empty-list" id="taskList"><div class="empty-state"><span class="empty-icon">✓</span><strong>No tasks yet</strong><p>Tasks you add for this workspace will appear here.</p></div></div>
           </article>
 
           <article class="panel team-panel">
             <div class="panel-heading"><div><h2>Team workload</h2><p>Current capacity by member</p></div><button class="text-button">Manage <span>→</span></button></div>
-            <div class="team-list">
-              <div class="team-row"><span class="avatar avatar-purple">MK</span><span class="team-person"><strong>Maya Khan</strong><small>Project lead</small></span><span class="workload"><i class="busy"></i> 82%</span></div>
-              <div class="team-row"><span class="avatar avatar-blue">DN</span><span class="team-person"><strong>Dev Nair</strong><small>Operations</small></span><span class="workload"><i class="healthy"></i> 64%</span></div>
-            </div>
+            <div class="team-list" id="teamList"><div class="empty-state"><span class="empty-icon">◎</span><strong>No team records yet</strong><p>Your verified profile will appear here.</p></div></div>
           </article>
         </section>
 
         <section class="panel projects-panel">
-          <div class="panel-heading"><div><h2>All projects</h2><p>12 active projects across your workspace</p></div><div class="project-controls"><select id="projectFilter" aria-label="Filter projects"><option value="all">All projects</option><option value="on-track">On track</option><option value="at-risk">At risk</option></select><button class="icon-button filter-button" aria-label="Filter options">≡</button></div></div>
-          <div class="table-wrap"><table><thead><tr><th>Project</th><th>Owner</th><th>Progress</th><th>Deadline</th><th>Status</th><th></th></tr></thead><tbody id="projectTable"><tr data-status="on-track"><td><span class="project-icon icon-web">⌁</span><strong>Website redesign</strong></td><td><span class="avatar avatar-purple small-avatar">MK</span> Maya Khan</td><td><span class="table-progress"><i><b style="width:84%"></b></i>84%</span></td><td>Oct 25, 2024</td><td><span class="status-pill on-track">On track</span></td><td><button class="row-more" aria-label="More options">•••</button></td></tr><tr data-status="on-track"><td><span class="project-icon icon-app">▣</span><strong>Mobile app v2.0</strong></td><td><span class="avatar avatar-blue small-avatar">DN</span> Dev Nair</td><td><span class="table-progress"><i><b style="width:62%"></b></i>62%</span></td><td>Nov 08, 2024</td><td><span class="status-pill on-track">On track</span></td><td><button class="row-more" aria-label="More options">•••</button></td></tr><tr data-status="at-risk"><td><span class="project-icon icon-campaign">✦</span><strong>Q4 marketing campaign</strong></td><td><span class="avatar avatar-purple small-avatar">MK</span> Maya Khan</td><td><span class="table-progress"><i><b class="risk-bar" style="width:48%"></b></i>48%</span></td><td>Nov 01, 2024</td><td><span class="status-pill at-risk">At risk</span></td><td><button class="row-more" aria-label="More options">•••</button></td></tr></tbody></table></div>
+          <div class="panel-heading"><div><h2>All projects</h2><p>Your project records will appear here</p></div><div class="project-controls"><select id="projectFilter" aria-label="Filter projects"><option value="all">All projects</option><option value="on-track">On track</option><option value="at-risk">At risk</option></select><button class="icon-button filter-button" aria-label="Filter options">≡</button></div></div>
+          <div class="table-wrap"><table><thead><tr><th>Project</th><th>Owner</th><th>Progress</th><th>Deadline</th><th>Status</th><th></th></tr></thead><tbody id="projectTable"><tr class="empty-table-row"><td colspan="6"><div class="empty-state"><span class="empty-icon">✦</span><strong>Your project list is empty</strong><p>Use “New project” to add your own project records.</p></div></td></tr></tbody></table></div>
         </section>
         <p class="footer-note">Last synced a few seconds ago <span>·</span> All systems operational</p>
       </div>
     </main>
   </div>
 
-  <div class="modal-backdrop" id="projectModal" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="Close dialog">×</button><p class="eyebrow">NEW WORKSPACE ITEM</p><h2 id="modalTitle">Create a project</h2><p class="modal-copy">Give your team a clear place to move the work forward.</p><form id="projectForm"><label>Project name<input id="projectName" required placeholder="e.g. Brand refresh" /></label><label>Owner<select><option>Maya Khan</option><option>Dev Nair</option></select></label><button class="primary-button" type="submit">Create project <span>→</span></button></form></div></div>
+  <div class="modal-backdrop" id="projectModal" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="Close dialog">×</button><p class="eyebrow">NEW WORKSPACE ITEM</p><h2 id="modalTitle">Create a project</h2><p class="modal-copy">Add the first record for your workspace.</p><form id="projectForm"><label>Project name<input id="projectName" required placeholder="Enter a project name" /></label><label>Owner<input id="projectOwner" required placeholder="Enter an owner name" /></label><button class="primary-button" type="submit">Create project <span>→</span></button></form></div></div>
   <script src="app.js"></script>
 </body>
 </html>

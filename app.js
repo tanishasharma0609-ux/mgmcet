@@ -1,8 +1,9 @@
 const searchInput = document.querySelector('#searchInput');
-const projectRows = [...document.querySelectorAll('#projectTable tr')];
+const projectRows = [...document.querySelectorAll('#projectTable tr:not(.empty-table-row)')];
 const projectFilter = document.querySelector('#projectFilter');
 const projectModal = document.querySelector('#projectModal');
 const projectName = document.querySelector('#projectName');
+const projectOwner = document.querySelector('#projectOwner');
 const loginScreen = document.querySelector('#loginScreen');
 const loginForm = document.querySelector('#loginForm');
 const loginError = document.querySelector('#loginError');
@@ -17,19 +18,19 @@ const memberName = document.querySelector('#memberName');
 const profileName = document.querySelector('#profileName');
 const profileAvatar = document.querySelector('#profileAvatar');
 const topAvatar = document.querySelector('#topAvatar');
+let activeMember = null;
 
 const teamAccess = { teammgm: 'mgmcet' };
-const memberAccess = [
-  { name: 'Maya Khan', email: 'maya.khan@teammgm.com', initials: 'MK', role: 'Project lead' },
-  { name: 'Dev Nair', email: 'dev.nair@teammgm.com', initials: 'DN', role: 'Operations' }
-];
+const sharedTeamEmail = 'team@mgmcet';
 
 function applyMember(member) {
+  activeMember = member;
   memberName.textContent = member.name;
   profileName.textContent = member.name;
   profileAvatar.textContent = member.initials;
   topAvatar.textContent = member.initials;
   document.querySelector('#profileRole').textContent = member.role;
+  document.querySelector('#teamList').innerHTML = `<div class="team-row"><span class="avatar avatar-purple">${member.initials}</span><span class="team-person"><strong>${member.name}</strong><small>${member.email}</small></span><span class="workload"><i class="healthy"></i> Active</span></div>`;
 }
 
 function unlockWorkspace(member) {
@@ -68,7 +69,12 @@ memberForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const submittedName = memberNameInput.value.trim().toLowerCase();
   const submittedEmail = memberEmailInput.value.trim().toLowerCase();
-  const member = memberAccess.find((profile) => profile.name.toLowerCase() === submittedName && profile.email === submittedEmail);
+  const member = submittedName && submittedEmail === sharedTeamEmail ? {
+    name: memberNameInput.value.trim(),
+    email: submittedEmail,
+    initials: memberNameInput.value.trim().split(/\s+/).map((part) => part[0]).join('').slice(0, 2).toUpperCase(),
+    role: 'Team member'
+  } : null;
   if (!member) {
     memberError.textContent = 'Member not recognized. Check your name and team email.';
     memberForm.classList.remove('shake');
@@ -137,6 +143,11 @@ document.querySelector('#newProjectBtn').addEventListener('click', () => {
   projectName.focus();
 });
 
+document.querySelector('.empty-action').addEventListener('click', () => {
+  projectModal.hidden = false;
+  projectName.focus();
+});
+
 document.querySelector('#modalClose').addEventListener('click', () => {
   projectModal.hidden = true;
 });
@@ -149,7 +160,9 @@ document.querySelector('#projectForm').addEventListener('submit', (event) => {
   event.preventDefault();
   const newRow = document.createElement('tr');
   newRow.dataset.status = 'on-track';
-  newRow.innerHTML = `<td><span class="project-icon icon-new">✦</span><strong>${projectName.value}</strong></td><td><span class="avatar avatar-purple small-avatar">MK</span> Maya Khan</td><td><span class="table-progress"><i><b style="width:0%"></b></i>0%</span></td><td>Not set</td><td><span class="status-pill on-track">On track</span></td><td><button class="row-more" aria-label="More options">•••</button></td>`;
+  const owner = projectOwner.value.trim();
+  newRow.innerHTML = `<td><span class="project-icon icon-new">✦</span><strong>${projectName.value}</strong></td><td><span class="avatar avatar-purple small-avatar">${owner.split(/\s+/).map((part) => part[0]).join('').slice(0, 2).toUpperCase()}</span> ${owner}</td><td><span class="table-progress"><i><b style="width:0%"></b></i>0%</span></td><td>Not set</td><td><span class="status-pill on-track">On track</span></td><td><button class="row-more" aria-label="More options">•••</button></td>`;
+  document.querySelector('.empty-table-row')?.remove();
   document.querySelector('#projectTable').prepend(newRow);
   projectRows.push(newRow);
   projectModal.hidden = true;

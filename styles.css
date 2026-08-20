@@ -118,3 +118,41 @@ h1, h2, .brand, .login-brand, .login-card h1, .metric-card > strong, .date-badge
 .login-brand .brand-mark { width: 34px; height: 34px; }
 .login-brand .brand-mark::before { inset: 5px -5px; }
 .login-brand .brand-mark::after { top: -5px; }
+
+/* Univo contrast palette */
+:root {
+  --ink: #f4f1f5;
+  --muted: #9290a3;
+  --line: #272641;
+  --paper: #07070b;
+  --white: #10101a;
+  --green: #ff4058;
+  --coral: #ff4058;
+  --teal: #a56cff;
+  --yellow: #ffbd68;
+  --blue: #274a82;
+  --shadow: 0 14px 38px rgba(0, 0, 0, .36);
+}
+
+body { background: var(--paper); }
+body::before { opacity: .24; background-image: linear-gradient(rgba(255,64,88,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(165,108,255,.035) 1px, transparent 1px); }
+.login-screen { background: #050509; }
+.login-screen::before { background: repeating-linear-gradient(0deg, transparent 0, transparent 3px, rgba(255,64,88,.035) 4px); }
+.login-grid-glow { background: radial-gradient(circle, rgba(165,108,255,.17), rgba(255,64,88,.05) 32%, transparent 68%); }
+.login-card { border-color: #4d294b; background: rgba(12, 10, 19, .96); box-shadow: 0 0 0 1px rgba(255,64,88,.05), 0 22px 70px rgba(0,0,0,.6); }
+.login-card::before, .login-card::after { border-color: var(--coral); }
+.login-brand .brand-mark { color: var(--coral); border-color: var(--coral); }
+.login-brand .brand-mark::before { border-color: var(--teal); border-left-color: transparent; border-right-color: transparent; }
+.login-brand .brand-mark::after { background: var(--yellow); box-shadow: 0 0 7px var(--yellow); }
+.login-card .eyebrow, .brand-cursor { color: var(--coral); }
+.login-form input { border-color: #39304d; background: #0b0a12; }.login-form input:focus { border-color: var(--coral); box-shadow: 0 0 0 3px rgba(255,64,88,.12); }
+.password-field button { color: var(--teal); }.login-button, .primary-button { background: var(--coral); color: #17060b; box-shadow: 0 0 20px rgba(255,64,88,.16); }.login-button:hover, .primary-button:hover { box-shadow: 0 0 28px rgba(255,64,88,.32); }
+.status-light { background: var(--coral); box-shadow: 0 0 9px var(--coral); }.login-error { color: #ff8795; }.demo-access summary { color: var(--teal); }
+.sidebar { background: #090911; border-right-color: #272641; }.brand-mark { background: transparent; color: var(--coral); border-color: var(--coral); font-family: 'Bebas Neue', sans-serif; font-size: 19px; }.brand-mark::before { border-color: var(--teal); border-left-color: transparent; border-right-color: transparent; }.brand-mark::after { background: var(--yellow); box-shadow: 0 0 7px var(--yellow); }
+.workspace-switcher { background: #11101c; border-color: #30264d; }.workspace-icon { background: var(--teal); color: #11091b; }.nav-item { color: #85829a; }.nav-item:hover, .nav-item.active { background: #271326; color: var(--coral); box-shadow: inset 2px 0 0 var(--coral); }.nav-count { background: #38203b; color: #d89bff; }
+.topbar { background: rgba(7,7,11,.94); border-bottom-color: var(--line); }.breadcrumbs strong { color: var(--coral); }.search-box { border-bottom-color: #3a3152; }.panel { background: rgba(13, 12, 22, .95); border-color: #2b2946; }.metric-lilac { background: #21172e; border-color: #54306b; }.metric-peach { background: #2b151f; border-color: #63303b; }.metric-blue { background: #101b31; border-color: #294b7b; }.metric-yellow { background: #241b17; border-color: #5d3b2f; }
+.metric-card > strong, .panel-heading h2, .project-info strong, .deadline-copy strong, .task-copy strong, .team-person strong { color: #f5f0f5; }.metric-top, .metric-icon { color: #aaa3b6; }.progress-track, .table-progress i { background: #25233b; }.date-badge { border-color: #3b3453; }.task-list, .team-list { border-top-color: #2b2946; }.task-row, .team-row, td { border-color: #24233b; }.checkmark { border-color: #50466a; }.task-row input:checked + .checkmark { background: var(--coral); border-color: var(--coral); color: #17060b; }.task-tabs button.active { color: var(--coral); border-bottom-color: var(--coral); }.project-controls select, .filter-button { background: #11101c; border-color: #39305a; color: #b3a9bf; }.status-pill.on-track { color: #d5a8ff; background: #33204a; }.status-pill.at-risk { color: #ffbd68; background: #45301b; }.footer-note { color: #77718d; }.logout-link { color: #ff7b89; }
+.project-red { background: linear-gradient(115deg, #35151e, #130b12); border-color: #7b3045; }.project-black { background: linear-gradient(115deg, #0a0a10, #030305); border-color: #30304b; }.icon-web { color: var(--coral); background: rgba(255,64,88,.12); }.icon-app { color: var(--teal); background: rgba(165,108,255,.12); }.icon-campaign { color: var(--yellow); background: rgba(255,189,104,.1); }.icon-research { color: #79a9ff; background: rgba(39,74,130,.2); }.icon-new { color: var(--coral); background: rgba(255,64,88,.1); }
+.modal-backdrop { background: rgba(4,3,8,.82); }.modal { background: #11101a; border-color: #4b345e; }.modal input, .modal select { background: #0b0a12; color: var(--ink); border-color: #39304d; }.modal .primary-button { background: var(--coral); color: #17060b; }
+.brand-mark { font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: .5px; }.brand-mark > span { transform: translateY(1px); }.login-brand .brand-mark { font-size: 22px; }
+.empty-state { display: grid; justify-items: center; gap: 7px; min-height: 145px; align-content: center; padding: 18px; text-align: center; color: var(--muted); }.empty-state strong { color: var(--ink); font-size: 12px; }.empty-state p { max-width: 230px; margin: 0; color: var(--muted); font-size: 10px; line-height: 1.5; }.empty-icon { display: grid; place-items: center; width: 32px; height: 32px; margin-bottom: 3px; color: var(--coral); border: 1px solid var(--coral); border-radius: 50%; font-size: 15px; animation: iconFloat 2.8s ease-in-out infinite; }.empty-action { margin-top: 3px; color: var(--coral); }.empty-list { border-top: 1px solid var(--line); }.empty-table-row td { padding: 0; }.empty-table-row .empty-state { min-height: 130px; }
