@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Northstar | Team workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <section class="login-screen" id="loginScreen" aria-labelledby="loginTitle">
+    <div class="login-grid-glow"></div>
+    <div class="login-card">
+      <div class="login-brand"><span class="brand-mark">N</span><span>northstar<span class="brand-cursor">_</span></span></div>
+      <p class="eyebrow">SECURE TEAM NODE // 07</p>
+      <h1 id="loginTitle">Enter the workspace.</h1>
+      <p class="login-copy">Your team dashboard is locked to verified members. Authenticate to continue.</p>
+      <form id="loginForm" class="login-form">
+        <label>Team username<input id="loginUsername" autocomplete="username" placeholder="e.g. alex.morgan" required /></label>
+        <label>Password<div class="password-field"><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter your access key" required /><button type="button" id="togglePassword" aria-label="Show password">◉</button></div></label>
+        <button class="primary-button login-button" type="submit">Verify identity <span>→</span></button>
+        <p class="login-error" id="loginError" role="alert"></p>
+      </form>
+      <div class="login-meta"><span class="status-light"></span> Local session active <span>·</span> Team access only</div>
+      <details class="demo-access"><summary>View demo access IDs</summary><p>alex.morgan / orbit-42<br>sam.okafor / neon-82<br>jamie.lee / vector-64<br>riley.kim / signal-57</p></details>
+    </div>
+  </section>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="brand">
+        <span class="brand-mark">N</span>
+        <span>northstar</span>
+      </div>
+
+      <div class="workspace-switcher">
+        <span class="workspace-icon">◈</span>
+        <span><small>Workspace</small><strong>Product team</strong></span>
+        <span class="chevron">⌄</span>
+      </div>
+
+      <nav class="primary-nav">
+        <p class="nav-label">Workspace</p>
+        <button class="nav-item active" data-view="Overview"><span class="nav-icon">▦</span> Overview</button>
+        <button class="nav-item" data-view="My tasks"><span class="nav-icon">✓</span> My tasks <span class="nav-count">4</span></button>
+        <button class="nav-item" data-view="Projects"><span class="nav-icon">□</span> Projects</button>
+        <button class="nav-item" data-view="Calendar"><span class="nav-icon">▣</span> Calendar</button>
+        <p class="nav-label second-label">Manage</p>
+        <button class="nav-item" data-view="Team"><span class="nav-icon">◎</span> Team</button>
+        <button class="nav-item" data-view="Reports"><span class="nav-icon">◒</span> Reports</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="storage-label"><span>Storage</span><span>62%</span></div>
+        <div class="storage-bar"><span></span></div>
+        <p>6.2 GB of 10 GB used</p>
+        <button class="help-link"><span>?</span> Help center</button>
+        <button class="logout-link" id="logoutButton"><span>↪</span> Lock workspace</button>
+        <button class="profile-mini"><span class="avatar avatar-green">AM</span><span><strong>Alex Morgan</strong><small>Admin</small></span><span class="more">•••</span></button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" aria-label="Open navigation">☰</button>
+        <div class="breadcrumbs"><span>Workspace</span><b>/</b><strong id="pageTitle">Overview</strong></div>
+        <div class="top-actions">
+          <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search anything..." /></label>
+          <button class="icon-button" aria-label="Notifications">♢<i></i></button>
+          <button class="avatar avatar-green top-avatar" aria-label="Open profile">AM</button>
+        </div>
+      </header>
+
+      <div class="page-wrap">
+        <section class="welcome-row">
+          <div>
+            <p class="eyebrow">THURSDAY, OCTOBER 24, 2024</p>
+            <h1>Good morning, Alex <span>✦</span></h1>
+            <p class="subheading">Here’s what’s happening across your team today.</p>
+          </div>
+          <button class="primary-button" id="newProjectBtn"><span>+</span> New project</button>
+        </section>
+
+        <section class="metric-grid" aria-label="Workspace summary">
+          <article class="metric-card metric-lilac"><div class="metric-top"><span>Active projects</span><span class="metric-icon">◫</span></div><strong>12</strong><span class="metric-change positive">↗ 16.8% <em>vs last month</em></span></article>
+          <article class="metric-card metric-peach"><div class="metric-top"><span>Tasks completed</span><span class="metric-icon">✓</span></div><strong>68</strong><span class="metric-change positive">↗ 12.4% <em>vs last month</em></span></article>
+          <article class="metric-card metric-blue"><div class="metric-top"><span>Team members</span><span class="metric-icon">◎</span></div><strong>08</strong><span class="metric-change neutral">— 2 new this month</span></article>
+          <article class="metric-card metric-yellow"><div class="metric-top"><span>Due this week</span><span class="metric-icon">◷</span></div><strong>09</strong><span class="metric-change warning">↗ 3 more <em>than last week</em></span></article>
+        </section>
+
+        <section class="content-grid">
+          <article class="panel progress-panel">
+            <div class="panel-heading"><div><h2>Project progress</h2><p>Keep an eye on your active work</p></div><button class="text-button">View all <span>→</span></button></div>
+            <div class="progress-list">
+              <div class="project-progress"><div class="project-info"><span class="project-dot coral"></span><span><strong>Website redesign</strong><small>Design & development</small></span><b>84%</b></div><div class="progress-track"><span class="fill coral-fill" style="width:84%"></span></div></div>
+              <div class="project-progress"><div class="project-info"><span class="project-dot teal"></span><span><strong>Mobile app v2.0</strong><small>Product & engineering</small></span><b>62%</b></div><div class="progress-track"><span class="fill teal-fill" style="width:62%"></span></div></div>
+              <div class="project-progress"><div class="project-info"><span class="project-dot yellow"></span><span><strong>Q4 marketing campaign</strong><small>Marketing</small></span><b>48%</b></div><div class="progress-track"><span class="fill yellow-fill" style="width:48%"></span></div></div>
+              <div class="project-progress"><div class="project-info"><span class="project-dot blue"></span><span><strong>Customer research</strong><small>Research & insights</small></span><b>31%</b></div><div class="progress-track"><span class="fill blue-fill" style="width:31%"></span></div></div>
+            </div>
+          </article>
+
+          <article class="panel deadline-panel">
+            <div class="panel-heading"><div><h2>Upcoming deadlines</h2><p>What needs your attention</p></div><button class="more-button" aria-label="More deadline options">•••</button></div>
+            <div class="deadline-list">
+              <div class="deadline-item"><span class="date-badge"><b>25</b><small>OCT</small></span><span class="deadline-copy"><strong>Homepage concepts</strong><small>Website redesign</small></span><span class="due-tag urgent">Tomorrow</span></div>
+              <div class="deadline-item"><span class="date-badge"><b>28</b><small>OCT</small></span><span class="deadline-copy"><strong>App store assets</strong><small>Mobile app v2.0</small></span><span class="due-tag">In 4 days</span></div>
+              <div class="deadline-item"><span class="date-badge"><b>30</b><small>OCT</small></span><span class="deadline-copy"><strong>Campaign brief</strong><small>Q4 marketing campaign</small></span><span class="due-tag">In 6 days</span></div>
+            </div>
+          </article>
+        </section>
+
+        <section class="lower-grid">
+          <article class="panel task-panel">
+            <div class="panel-heading task-heading"><div><h2>My tasks</h2><p>4 tasks need your attention</p></div><div class="task-tabs"><button class="active">Today</button><button>This week</button></div></div>
+            <div class="task-list" id="taskList">
+              <label class="task-row"><input type="checkbox"><span class="checkmark"></span><span class="task-copy"><strong>Review homepage concepts</strong><small>Website redesign <b>·</b> Due today</small></span><span class="priority high">High</span></label>
+              <label class="task-row"><input type="checkbox"><span class="checkmark"></span><span class="task-copy"><strong>Finalize onboarding flow</strong><small>Mobile app v2.0 <b>·</b> Due today</small></span><span class="priority medium">Medium</span></label>
+              <label class="task-row"><input type="checkbox"><span class="checkmark"></span><span class="task-copy"><strong>Write launch email copy</strong><small>Q4 marketing campaign <b>·</b> Due tomorrow</small></span><span class="priority medium">Medium</span></label>
+              <label class="task-row"><input type="checkbox"><span class="checkmark"></span><span class="task-copy"><strong>Schedule user interviews</strong><small>Customer research <b>·</b> Due Oct 28</small></span><span class="priority low">Low</span></label>
+            </div>
+          </article>
+
+          <article class="panel team-panel">
+            <div class="panel-heading"><div><h2>Team workload</h2><p>Current capacity by member</p></div><button class="text-button">Manage <span>→</span></button></div>
+            <div class="team-list">
+              <div class="team-row"><span class="avatar avatar-purple">SO</span><span class="team-person"><strong>Sam Okafor</strong><small>Design</small></span><span class="workload"><i class="busy"></i> 82%</span></div>
+              <div class="team-row"><span class="avatar avatar-blue">JL</span><span class="team-person"><strong>Jamie Lee</strong><small>Engineering</small></span><span class="workload"><i class="healthy"></i> 64%</span></div>
+              <div class="team-row"><span class="avatar avatar-peach">RK</span><span class="team-person"><strong>Riley Kim</strong><small>Marketing</small></span><span class="workload"><i class="healthy"></i> 57%</span></div>
+              <div class="team-row"><span class="avatar avatar-yellow">TN</span><span class="team-person"><strong>Taylor Nguyen</strong><small>Research</small></span><span class="workload"><i class="open"></i> 36%</span></div>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel projects-panel">
+          <div class="panel-heading"><div><h2>All projects</h2><p>12 active projects across your workspace</p></div><div class="project-controls"><select id="projectFilter" aria-label="Filter projects"><option value="all">All projects</option><option value="on-track">On track</option><option value="at-risk">At risk</option></select><button class="icon-button filter-button" aria-label="Filter options">≡</button></div></div>
+          <div class="table-wrap"><table><thead><tr><th>Project</th><th>Owner</th><th>Progress</th><th>Deadline</th><th>Status</th><th></th></tr></thead><tbody id="projectTable"><tr data-status="on-track"><td><span class="project-dot coral"></span><strong>Website redesign</strong></td><td><span class="avatar avatar-green small-avatar">AM</span> Alex Morgan</td><td><span class="table-progress"><i><b style="width:84%"></b></i>84%</span></td><td>Oct 25, 2024</td><td><span class="status-pill on-track">On track</span></td><td><button class="row-more" aria-label="More options">•••</button></td></tr><tr data-status="on-track"><td><span class="project-dot teal"></span><strong>Mobile app v2.0</strong></td><td><span class="avatar avatar-blue small-avatar">JL</span> Jamie Lee</td><td><span class="table-progress"><i><b style="width:62%"></b></i>62%</span></td><td>Nov 08, 2024</td><td><span class="status-pill on-track">On track</span></td><td><button class="row-more" aria-label="More options">•••</button></td></tr><tr data-status="at-risk"><td><span class="project-dot yellow"></span><strong>Q4 marketing campaign</strong></td><td><span class="avatar avatar-peach small-avatar">RK</span> Riley Kim</td><td><span class="table-progress"><i><b class="risk-bar" style="width:48%"></b></i>48%</span></td><td>Nov 01, 2024</td><td><span class="status-pill at-risk">At risk</span></td><td><button class="row-more" aria-label="More options">•••</button></td></tr></tbody></table></div>
+        </section>
+        <p class="footer-note">Last synced a few seconds ago <span>·</span> All systems operational</p>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="projectModal" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="Close dialog">×</button><p class="eyebrow">NEW WORKSPACE ITEM</p><h2 id="modalTitle">Create a project</h2><p class="modal-copy">Give your team a clear place to move the work forward.</p><form id="projectForm"><label>Project name<input id="projectName" required placeholder="e.g. Brand refresh" /></label><label>Owner<select><option>Alex Morgan</option><option>Jamie Lee</option><option>Riley Kim</option></select></label><button class="primary-button" type="submit">Create project <span>→</span></button></form></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
